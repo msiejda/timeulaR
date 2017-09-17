@@ -1,4 +1,4 @@
-#' Fetch API Key
+#' Fetch API key
 #'
 #' With this function you can fetch your API Key.
 #'

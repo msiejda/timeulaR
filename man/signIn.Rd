@@ -2,7 +2,7 @@
 % Please edit documentation in R/signIn.R
 \name{signIn}
 \alias{signIn}
-\title{Obtain Access token}
+\title{Obtain access token}
 \usage{
 signIn(apiKey, apiSecret)
 }

@@ -57,7 +57,7 @@ token <- "123456789"
 timeulaR::generateKeys(token)
 ```
 
-List all Activities
+List all activities
 -------------------
 
 ``` r
@@ -74,7 +74,7 @@ timeulaR::listActivities(token)
 #  54654  xxx #374046         zei          8
 ```
 
-List all known Devices
+List all known devices
 ----------------------
 
 ``` r
@@ -82,4 +82,14 @@ token <- "123456789"
 timeulaR::listDevices(token)
 #    serial name active disabled
 #  TZ008W0S   NA   TRUE    FALSE
+```
+
+Show current tracking
+---------------------
+
+``` r
+token <- "123456789"
+timeulaR::currentTracking(token)
+#     id name   color integration               startedAt note
+#  54647  xxx #4eae53         zei 2017-09-17T14:32:33.226   NA
 ```

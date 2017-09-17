@@ -1,4 +1,4 @@
-#' Obtain Access token
+#' Obtain access token
 #'
 #' With this endpoint you can obtain Access Token required to access secured endpoints.
 #' To do so, you have to provide API Key & API Secret.

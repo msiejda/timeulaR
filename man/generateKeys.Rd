@@ -2,7 +2,7 @@
 % Please edit documentation in R/generateKeys.R
 \name{generateKeys}
 \alias{generateKeys}
-\title{Generate new API Key & API Secret}
+\title{Generate new API key & API secret}
 \usage{
 generateKeys(token, as_df = TRUE)
 }

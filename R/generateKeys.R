@@ -1,4 +1,4 @@
-#' Generate new API Key & API Secret
+#' Generate new API key & API secret
 #'
 #' With this function you can generate new pair of API Key & API Secret.
 #' Every time you generate a new pair, an old one becomes invalid.

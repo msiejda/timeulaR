@@ -2,7 +2,7 @@
 % Please edit documentation in R/listActivities.R
 \name{listActivities}
 \alias{listActivities}
-\title{List all Activities}
+\title{List all activities}
 \usage{
 listActivities(token, as_df = TRUE)
 }
@@ -16,7 +16,7 @@ A data frame or list with id, name, color, integration and device side
 of the activities.
 }
 \description{
-List all Activities
+List all activities
 }
 \examples{
 token <- "123456789"

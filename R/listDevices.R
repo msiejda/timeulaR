@@ -1,4 +1,4 @@
-#' List all known Devices
+#' List all known devices
 #'
 #' @param token Token obtained with \code{\link{signIn}}
 #' @param as_df If TRUE a data frame is returned, if FALSE a list is returned.

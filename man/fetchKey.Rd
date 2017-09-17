@@ -2,7 +2,7 @@
 % Please edit documentation in R/fetchKey.R
 \name{fetchKey}
 \alias{fetchKey}
-\title{Fetch API Key}
+\title{Fetch API key}
 \usage{
 fetchKey(token)
 }

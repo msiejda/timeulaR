@@ -2,7 +2,7 @@
 % Please edit documentation in R/listDevices.R
 \name{listDevices}
 \alias{listDevices}
-\title{List all known Devices}
+\title{List all known devices}
 \usage{
 listDevices(token, as_df = TRUE)
 }
@@ -15,7 +15,7 @@ listDevices(token, as_df = TRUE)
 A data frame or list with serial number, name, active and disabled indicators.
 }
 \description{
-List all known Devices
+List all known devices
 }
 \examples{
 token <- "123456789"
