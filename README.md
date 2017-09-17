@@ -34,3 +34,11 @@ timeulaR::userProfile(token, as_df = TRUE)
 #    userId          email firstName  lastName
 #  1   7030 ses@damvad.com Sebastian Steenssøn
 ```
+
+Fetch API key
+-------------
+
+``` r
+token <- "123456789"
+timeulaR::fetchKey(token)
+```
