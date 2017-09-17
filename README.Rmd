@@ -45,8 +45,8 @@ With this function you can fetch your profile data.
 ```{r example_userProfile, eval = FALSE}
 token <- "123456789"
 timeulaR::userProfile(token, as_df = TRUE)
-#    userId          email firstName  lastName
-#  1   7030 ses@damvad.com Sebastian Steenssøn
+#  userId          email firstName  lastName
+#    7030 ses@damvad.com Sebastian Steenssøn
 ```
 
 
@@ -70,4 +70,21 @@ If you have lost your API Secret, you can generate a new pair of API Key & API S
 ```{r example_generateKeys, eval = FALSE}
 token <- "123456789"
 timeulaR::generateKeys(token)
+```
+
+
+## List all Activities
+
+```{r example_listActivities, eval = FALSE}
+token <- "123456789"
+timeulaR::listActivities(token)
+#     id name   color integration deviceSide
+#  54649  xxx #4051b3         zei          1
+#  54650  xxx #fec22e         zei          2
+#  54651  xxx #9b2bae         zei          3
+#  54652  xxx #795549         zei          4
+#  54647  xxx #4eae53         zei          5
+#  54648  xxx #f2483f         zei          6
+#  54653  xxx #0f9587         zei          7
+#  54654  xxx #374046         zei          8
 ```

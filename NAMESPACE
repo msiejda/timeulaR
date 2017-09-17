@@ -2,5 +2,6 @@
 
 export(fetchKey)
 export(generateKeys)
+export(listActivities)
 export(signIn)
 export(userProfile)
