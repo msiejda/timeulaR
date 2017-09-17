@@ -1,14 +1,14 @@
 #' Fetch user's profile
 #'
-#' @param token Token obtained with \code{\link{DeveloperSignInRequest}}
+#' @param token Token obtained with \code{\link{signIn}}
 #' @param as_df If TRUE a data frame is returned, if FALSE a list is returned.
 #'
 #' @return A data frame or list with userId, email, firstName and lastName.
 #' @export
 #'
 #' @examples token <- "123456789"
-#' UserProfile(token, as_df = TRUE)
-UserProfile <- function(token, as_df = TRUE) {
+#' userProfile(token, as_df = TRUE)
+userProfile <- function(token, as_df = TRUE) {
 
     base_url <- "api.timeular.com/api/v1/"
 

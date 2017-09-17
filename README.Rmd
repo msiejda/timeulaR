@@ -30,17 +30,17 @@ With this endpoint you can obtain Access Token required to access secured endpoi
 To do so, you have to provide API Key & API Secret.
 They can be generated on the profile website (https://profile.timeular.com/#/login).
 
-```{r example_DeveloperSignInRequest, eval = FALSE}
+```{r example_signIn, eval = FALSE}
 apiKey <- "ABCDefgh1234="
 apiSecret <- "EFGHijkl5678="
-token <- timeulaR::DeveloperSignInRequest(apiKey, apiSecret)
+token <- timeulaR::signIn(apiKey, apiSecret)
 ```
 
 ## Fetch user's profile
 
-```{r example_UserProfile, eval = FALSE}
+```{r example_userProfile, eval = FALSE}
 token <- "123456789"
-timeulaR::UserProfile(token, as_df = TRUE)
+timeulaR::userProfile(token, as_df = TRUE)
 #    userId          email firstName  lastName
 #  1   7030 ses@damvad.com Sebastian Steenssøn
 ```

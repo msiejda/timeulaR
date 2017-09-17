@@ -12,8 +12,8 @@
 #'
 #' @examples apiKey <- "ABCDefgh1234="
 #' apiSecret <- "EFGHijkl5678="
-#' DeveloperSignInRequest(apiKey, apiSecret)
-DeveloperSignInRequest <- function(apiKey, apiSecret) {
+#' signIn(apiKey, apiSecret)
+signIn <- function(apiKey, apiSecret) {
 
     base_url <- "api.timeular.com/api/v1/"
 

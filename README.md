@@ -22,7 +22,7 @@ With this endpoint you can obtain Access Token required to access secured endpoi
 ``` r
 apiKey <- "ABCDefgh1234="
 apiSecret <- "EFGHijkl5678="
-token <- timeulaR::DeveloperSignInRequest(apiKey, apiSecret)
+token <- timeulaR::signIn(apiKey, apiSecret)
 ```
 
 Fetch user's profile
@@ -30,7 +30,7 @@ Fetch user's profile
 
 ``` r
 token <- "123456789"
-timeulaR::UserProfile(token, as_df = TRUE)
+timeulaR::userProfile(token, as_df = TRUE)
 #    userId          email firstName  lastName
 #  1   7030 ses@damvad.com Sebastian Steenssøn
 ```
