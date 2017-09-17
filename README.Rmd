@@ -24,6 +24,7 @@ You can install timeulaR from github with:
 devtools::install_github("Steensson/timeulaR")
 ```
 
+
 ## Obtain access token
 
 With this endpoint you can obtain Access Token required to access secured endpoints.
@@ -36,6 +37,7 @@ apiSecret <- "EFGHijkl5678="
 token <- timeulaR::signIn(apiKey, apiSecret)
 ```
 
+
 ## Fetch user's profile
 
 ```{r example_userProfile, eval = FALSE}
@@ -45,9 +47,18 @@ timeulaR::userProfile(token, as_df = TRUE)
 #  1   7030 ses@damvad.com Sebastian Steenssøn
 ```
 
+
 ## Fetch API key
 
 ```{r example_fetchKey, eval = FALSE}
 token <- "123456789"
 timeulaR::fetchKey(token)
+```
+
+
+## Generate new API Key & API Secret
+
+```{r example_generateKeys, eval = FALSE}
+token <- "123456789"
+timeulaR::generateKeys(token)
 ```

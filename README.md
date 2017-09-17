@@ -42,3 +42,11 @@ Fetch API key
 token <- "123456789"
 timeulaR::fetchKey(token)
 ```
+
+Generate new API Key & API Secret
+---------------------------------
+
+``` r
+token <- "123456789"
+timeulaR::generateKeys(token)
+```
