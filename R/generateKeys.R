@@ -1,6 +1,6 @@
 #' Generate new API Key & API Secret
 #'
-#' With this endpoint you can generate new pair of API Key & API Secret.
+#' With this function you can generate new pair of API Key & API Secret.
 #' Every time you generate a new pair, an old one becomes invalid.
 #' Your API Secret won’t be accessible later, so please note it down in some secret place.
 #' If you have lost your API Secret, you can generate a new pair of API Key & API Secret here.

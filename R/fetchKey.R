@@ -1,6 +1,6 @@
 #' Fetch API Key
 #'
-#' With this endpoint you can fetch your API Key.
+#' With this function you can fetch your API Key.
 #'
 #' @param token Token obtained with \code{\link{signIn}}
 #'

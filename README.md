@@ -28,6 +28,8 @@ token <- timeulaR::signIn(apiKey, apiSecret)
 Fetch user's profile
 --------------------
 
+With this function you can fetch your profile data.
+
 ``` r
 token <- "123456789"
 timeulaR::userProfile(token, as_df = TRUE)
@@ -38,6 +40,8 @@ timeulaR::userProfile(token, as_df = TRUE)
 Fetch API key
 -------------
 
+With this function you can fetch your API Key.
+
 ``` r
 token <- "123456789"
 timeulaR::fetchKey(token)
@@ -45,6 +49,8 @@ timeulaR::fetchKey(token)
 
 Generate new API Key & API Secret
 ---------------------------------
+
+With this function you can generate new pair of API Key & API Secret. Every time you generate a new pair, an old one becomes invalid. Your API Secret won’t be accessible later, so please note it down in some secret place. If you have lost your API Secret, you can generate a new pair of API Key & API Secret here.
 
 ``` r
 token <- "123456789"

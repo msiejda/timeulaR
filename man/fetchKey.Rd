@@ -13,7 +13,7 @@ fetchKey(token)
 A character containing your API key.
 }
 \description{
-With this endpoint you can fetch your API Key.
+With this function you can fetch your API Key.
 }
 \examples{
 token <- "123456789"
