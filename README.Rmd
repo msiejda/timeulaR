@@ -1,0 +1,37 @@
+---
+output: github_document
+---
+
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# timeulaR
+
+Timeular ZEI is a tangible time tracking solution. This package is a wrapper for the Timeular public API.
+
+## Installation
+
+You can install timeulaR from github with:
+
+```{r gh-installation, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("Steensson/timeulaR")
+```
+
+## Obtain access token
+
+With this endpoint you can obtain Access Token required to access secured endpoints.
+To do so, you have to provide API Key & API Secret.
+They can be generated on the profile website (https://profile.timeular.com/#/login).
+
+```{r example_DeveloperSignInRequest, eval = FALSE}
+apiKey <- "ABCDefgh1234="
+apiSecret <- "EFGHijkl5678="
+token <- timeulaR::DeveloperSignInRequest(apiKey, apiSecret)
+```
