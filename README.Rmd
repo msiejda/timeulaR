@@ -88,3 +88,13 @@ timeulaR::listActivities(token)
 #  54653  xxx #0f9587         zei          7
 #  54654  xxx #374046         zei          8
 ```
+
+
+## List all known Devices
+
+```{r example_listDevices, eval = FALSE}
+token <- "123456789"
+timeulaR::listDevices(token)
+#    serial name active disabled
+#  TZ008W0S   NA   TRUE    FALSE
+```

@@ -3,5 +3,6 @@
 export(fetchKey)
 export(generateKeys)
 export(listActivities)
+export(listDevices)
 export(signIn)
 export(userProfile)
