@@ -4,12 +4,14 @@
 \alias{currentTracking}
 \title{Show current tracking}
 \usage{
-currentTracking(token, as_df = TRUE)
+currentTracking(token, as_df = TRUE, tz = "CET")
 }
 \arguments{
 \item{token}{Token obtained with \code{\link{signIn}}}
 
 \item{as_df}{If TRUE a data frame is returned, if FALSE a list is returned.}
+
+\item{tz}{Desired timezone}
 }
 \value{
 A data frame or list with id, name, color, integration, started at and note of current tracking.
@@ -19,5 +21,5 @@ Show current tracking
 }
 \examples{
 token <- "123456789"
-currentTracking(token, as_df = TRUE)
+currentTracking(token, as_df = TRUE, tz = "CET")
 }
