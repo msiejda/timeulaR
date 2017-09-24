@@ -5,8 +5,8 @@
 #' @return A timestamp with Timeular style
 #' @export
 #'
-#' @examples posix_to_timeular_timestamp(posix = "2017-09-24 17:18:53 CEST")
-posix_to_timeular_timestamp <- function(posix = "2017-09-24 17:18:53 CEST") {
+#' @examples posix_to_timeular(posix = "2017-09-24 17:18:53 CEST")
+posix_to_timeular <- function(posix = "2017-09-24 17:18:53 CEST") {
 
     if ( !any(stringr::str_detect(class(posix), "POSIX")) ) stop("Not POSIX object!")
 

@@ -140,18 +140,18 @@ timeulaR::timeEntries(stoppedAfter, startedBefore, token, as_df = TRUE)
 
 ### Convert Timeular timestamp to POSIX object
 
-```{r example_timeular_timestamp_to_posix, eval = FALSE}
+```{r example_timeular_to_posix, eval = FALSE}
 timeular_time <- "2017-09-18T12:19:20.356"
-timeulaR::timeular_timestamp_to_posix(timeular_time, tz = "CET")
+timeulaR::timeular_to_posix(timeular_time, tz = "CET")
 # "2017-09-18 14:19:20 CEST"
 ```
 
 
 ### Convert POSIX object to Timeular timestamp
 
-```{r example_posix_to_timeular_timestamp, eval = FALSE}
+```{r example_posix_to_timeular, eval = FALSE}
 posix <- as.POSIXct("2017-09-18 14:19:20", tz = "CET")
-timeulaR::posix_to_timeular_timestamp(posix)
+timeulaR::posix_to_timeular(posix)
 # "2017-09-18T12:19:20.00"
 ```
 

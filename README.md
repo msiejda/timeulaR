@@ -120,7 +120,7 @@ Helper functions
 
 ``` r
 timeular_time <- "2017-09-18T12:19:20.356"
-timeulaR::timeular_timestamp_to_posix(timeular_time, tz = "CET")
+timeulaR::timeular_to_posix(timeular_time, tz = "CET")
 # "2017-09-18 14:19:20 CEST"
 ```
 
@@ -128,6 +128,6 @@ timeulaR::timeular_timestamp_to_posix(timeular_time, tz = "CET")
 
 ``` r
 posix <- as.POSIXct("2017-09-18 14:19:20", tz = "CET")
-timeulaR::posix_to_timeular_timestamp(posix)
+timeulaR::posix_to_timeular(posix)
 # "2017-09-18T12:19:20.00"
 ```

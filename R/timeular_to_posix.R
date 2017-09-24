@@ -6,8 +6,8 @@
 #' @return A POSIX object with desired timezone
 #' @export
 #'
-#' @examples timeular_time_to_posix(timeular_time = "2017-09-18T14:32:26.960", tz = "CET")
-timeular_timestamp_to_posix <- function(timeular_time, tz = "CET") {
+#' @examples timeular_to_posix(timeular_time = "2017-09-18T14:32:26.960", tz = "CET")
+timeular_to_posix <- function(timeular_time, tz = "CET") {
 
     # Remove "T"
     timeular_time <- stringr::str_replace(timeular_time, "T", " ")
