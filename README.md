@@ -4,8 +4,7 @@ timeulaR
 
 Timeular ZEI is a tangible time tracking solution. This package is a wrapper for the Timeular public API.
 
-Installation
-------------
+### Installation
 
 You can install timeulaR from github with:
 
@@ -14,8 +13,10 @@ You can install timeulaR from github with:
 devtools::install_github("Steensson/timeulaR")
 ```
 
-Obtain access token
--------------------
+Timeular Public API functions
+=============================
+
+### Obtain access token
 
 With this endpoint you can obtain Access Token required to access secured endpoints. To do so, you have to provide API Key & API Secret. They can be generated on the profile website (<https://profile.timeular.com/#/login>).
 
@@ -25,8 +26,7 @@ apiSecret <- "EFGHijkl5678="
 token <- timeulaR::signIn(apiKey, apiSecret)
 ```
 
-Fetch user's profile
---------------------
+### Fetch user's profile
 
 With this function you can fetch your profile data.
 
@@ -37,8 +37,7 @@ timeulaR::userProfile(token, as_df = TRUE)
 #    7030 ses@damvad.com Sebastian Steenssøn
 ```
 
-Fetch API key
--------------
+### Fetch API key
 
 With this function you can fetch your API Key.
 
@@ -47,8 +46,7 @@ token <- "123456789"
 timeulaR::fetchKey(token)
 ```
 
-Generate new API Key & API Secret
----------------------------------
+### Generate new API Key & API Secret
 
 With this function you can generate new pair of API Key & API Secret. Every time you generate a new pair, an old one becomes invalid. Your API Secret won’t be accessible later, so please note it down in some secret place. If you have lost your API Secret, you can generate a new pair of API Key & API Secret here.
 
@@ -57,8 +55,7 @@ token <- "123456789"
 timeulaR::generateKeys(token)
 ```
 
-List all activities
--------------------
+### List all activities
 
 ``` r
 token <- "123456789"
@@ -74,8 +71,7 @@ timeulaR::listActivities(token)
 #  54654  xxx #374046         zei          8
 ```
 
-List all known devices
-----------------------
+### List all known devices
 
 ``` r
 token <- "123456789"
@@ -84,18 +80,16 @@ timeulaR::listDevices(token)
 #  TZ008W0S   NA   TRUE    FALSE
 ```
 
-Show current tracking
----------------------
+### Show current tracking
 
 ``` r
 token <- "123456789"
-timeulaR::currentTracking(token)
-#     id                          name   color integration           startedAt note
-#  54647 Acquisition and Public Tender #4eae53         zei 2017-09-18 16:32:26   NA
+timeulaR::currentTracking(token, as_df = TRUE)
+#     id                          name   color integration               startedAt note
+#  54647 Acquisition and Public Tender #4eae53         zei 2017-09-18T16:32:26.437   NA
 ```
 
-Find Time Entries in given range
---------------------------------
+### Find Time Entries in given range
 
 Find Time Entries which have at least one millisecond in common with provided time range.
 
@@ -103,17 +97,37 @@ Find Time Entries which have at least one millisecond in common with provided ti
 stoppedAfter <- "2017-09-17T00:00:00.000"
 startedBefore <- "2017-09-19T00:00:00.000"
 token <- "123456789"
-timeulaR::timeEntries(stoppedAfter, startedBefore, token, as_df = TRUE, tz = "CET")
-#      id activityId name   color integration           startedAt           stoppedAt note
-#  432159      54647  xxx #4eae53         zei 2017-09-17 14:20:03 2017-09-17 15:47:09   NA
-#  432267      54647  xxx #4eae53         zei 2017-09-17 16:32:33 2017-09-17 18:24:44   NA
-#  436842      54647  xxx #4eae53         zei 2017-09-18 12:08:23 2017-09-18 14:19:12   NA
-#  436927      54654  xxx #374046         zei 2017-09-18 14:19:20 2017-09-18 14:28:28   NA
-#  437029      54652  xxx #795549         zei 2017-09-18 14:28:28 2017-09-18 14:40:50   NA
-#  437188      54654  xxx #374046         zei 2017-09-18 14:40:51 2017-09-18 14:59:41   NA
-#  437214      54651  xxx #9b2bae         zei 2017-09-18 14:59:42 2017-09-18 15:02:08   NA
-#  437356      54647  xxx #4eae53         zei 2017-09-18 15:02:09 2017-09-18 15:19:07   NA
-#  437827      54651  xxx #9b2bae         zei 2017-09-18 15:19:07 2017-09-18 16:11:33   NA
-#  437862      54652  xxx #795549         zei 2017-09-18 16:11:34 2017-09-18 16:15:34   NA
-#  438043      54651  xxx #9b2bae         zei 2017-09-18 16:15:35 2017-09-18 16:32:26   NA
+timeulaR::timeEntries(stoppedAfter, startedBefore, token, as_df = TRUE)
+#      id activityId name   color integration               startedAt               stoppedAt note
+#  432159      54647  xxx #4eae53         zei 2017-09-17T12:20:03.578 2017-09-17T13:47:09.602   NA
+#  432267      54647  xxx #4eae53         zei 2017-09-17T14:32:33.226 2017-09-17T16:24:44.072   NA
+#  436842      54647  xxx #4eae53         zei 2017-09-18T10:08:23.241 2017-09-18T12:19:12.974   NA
+#  436927      54654  xxx #374046         zei 2017-09-18T12:19:20.356 2017-09-18T12:28:28.355   NA
+#  437029      54652  xxx #795549         zei 2017-09-18T12:28:28.755 2017-09-18T12:40:50.752   NA
+#  437188      54654  xxx #374046         zei 2017-09-18T12:40:51.299 2017-09-18T12:59:41.573   NA
+#  437214      54651  xxx #9b2bae         zei 2017-09-18T12:59:42.114 2017-09-18T13:02:08.765   NA
+#  437356      54647  xxx #4eae53         zei 2017-09-18T13:02:09.163 2017-09-18T13:19:07.182   NA
+#  437827      54651  xxx #9b2bae         zei 2017-09-18T13:19:07.587 2017-09-18T14:11:33.595   NA
+#  437862      54652  xxx #795549         zei 2017-09-18T14:11:34.088 2017-09-18T14:15:34.792   NA
+#  438043      54651  xxx #9b2bae         zei 2017-09-18T14:15:35.306 2017-09-18T14:32:26.413   NA
+#  438477      54647  xxx #4eae53         zei 2017-09-18T14:32:26.960 2017-09-18T15:28:00.451   NA
+```
+
+Helper functions
+================
+
+### Convert Timeular timestamp to POSIX object
+
+``` r
+timeular_time <- "2017-09-18T12:19:20.356"
+timeulaR::timeular_timestamp_to_posix(timeular_time, tz = "CET")
+# "2017-09-18 14:19:20 CEST"
+```
+
+### Convert POSIX object to Timeular timestamp
+
+``` r
+posix <- as.POSIXct("2017-09-18 14:19:20", tz = "CET")
+timeulaR::posix_to_timeular_timestamp(posix)
+# "2017-09-18T12:19:20.00"
 ```

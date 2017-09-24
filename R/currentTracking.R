@@ -36,11 +36,7 @@ currentTracking <- function(token, as_df = TRUE, tz = "CET") {
             name = ifelse(is.null(parsed$currentTracking$activity$name), NA, parsed$currentTracking$activity$name),
             color = ifelse(is.null(parsed$currentTracking$activity$color), NA, parsed$currentTracking$activity$color),
             integration = ifelse(is.null(parsed$currentTracking$activity$integration), NA, parsed$currentTracking$activity$integration),
-            startedAt = switch(
-                EXPR = is.null(parsed$currentTracking$startedAt) + 1,
-                timeulaR:::convert_to_posix(parsed$currentTracking$startedAt, tz = "CET"),
-                NA
-            ),
+            integration = ifelse(is.null(parsed$currentTracking$startedAt), NA, parsed$currentTracking$startedAt),
             note = ifelse(is.null(parsed$currentTracking$note), NA, parsed$currentTracking$note),
             stringsAsFactors = FALSE
         )

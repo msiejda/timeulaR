@@ -2,20 +2,21 @@
 #'
 #' Find Time Entries which have at least one millisecond in common with provided time range.
 #'
-#' @param stoppedAfter Timestamp which matches all Time Entries stopped after it. Eg. 2017-01-01T00:00:00.000.
-#' @param startedBefore Timestamp which matches all Time Entries started before it. Eg. 2017-12-31T23:59:59.999.
+#' @param stoppedAfter Timestamp which matches all time entries stopped after it. Eg. 2017-01-01T00:00:00.000.
+#' @param startedBefore Timestamp which matches all time entries started before it. Eg. 2017-12-31T23:59:59.999.
 #' @param token Token obtained with \code{\link{signIn}}
-#' @param as_df If TRUE a data frame is returned, if FALSE a list is returned.
-#' @param tz Desired timezone
+#' @param as_df If \code{TRUE} a data frame is returned, if \code{FALSE} a list is returned.
 #'
-#' @return A data frame or list containing id, activity id, name, color, integration, started at, stopped at and a note.
+#' @return A data frame or list containing id (\code{id}), activity id (\code{activityId}),
+#' project name (\code{name}), color (\code{color}), integration (\code{integration}),
+#' started at (\code{startedAt}), stopped at (\code{stoppedAt}) and a note (\code{note}).
 #' @export
 #'
 #' @examples stoppedAfter <- "2017-09-17T00:00:00.000"
 #' startedBefore <- "2017-09-19T00:00:00.000"
 #' token <- "123456789"
-#' timeEntries(stoppedAfter, startedBefore, token, as_df = TRUE, tz = "CET")
-timeEntries <- function(stoppedAfter, startedBefore, token, as_df = TRUE, tz = "CET") {
+#' timeEntries(stoppedAfter, startedBefore, token, as_df = TRUE)
+timeEntries <- function(stoppedAfter, startedBefore, token, as_df = TRUE) {
 
     base_url <- "api.timeular.com/api/v1/"
     bearer_token <- paste("Bearer", token)
@@ -45,16 +46,8 @@ timeEntries <- function(stoppedAfter, startedBefore, token, as_df = TRUE, tz = "
                 name = ifelse(is.null(entry$activity$name), NA, entry$activity$name),
                 color = ifelse(is.null(entry$activity$color), NA, entry$activity$color),
                 integration = ifelse(is.null(entry$activity$integration), NA, entry$activity$integration),
-                startedAt = switch(
-                    EXPR = is.null(entry$duration$startedAt) + 1,
-                    timeulaR:::convert_to_posix(entry$duration$startedAt, tz = tz),
-                    NA
-                ),
-                stoppedAt = switch(
-                    EXPR = is.null(entry$duration$stoppedAt) + 1,
-                    timeulaR:::convert_to_posix(entry$duration$stoppedAt, tz = tz),
-                    NA
-                ),
+                startedAt = ifelse(is.null(entry$duration$startedAt), NA, entry$duration$startedAt),
+                stoppedAt = ifelse(is.null(entry$duration$stoppedAt), NA, entry$duration$stoppedAt),
                 note = ifelse(is.null(entry$note), NA, entry$note),
                 stringsAsFactors = FALSE
             )
@@ -63,6 +56,7 @@ timeEntries <- function(stoppedAfter, startedBefore, token, as_df = TRUE, tz = "
 
         parsed <- do.call(rbind, parsed)
         parsed <- parsed[order(parsed$startedAt),]
+        rownames(parsed) <- 1:nrow(parsed)
 
     }
 

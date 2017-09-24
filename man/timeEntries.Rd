@@ -4,21 +4,21 @@
 \alias{timeEntries}
 \title{Find Time Entries in given range}
 \usage{
-timeEntries(stoppedAfter, startedBefore, token, as_df = TRUE, tz = "CET")
+timeEntries(stoppedAfter, startedBefore, token, as_df = TRUE)
 }
 \arguments{
-\item{stoppedAfter}{Timestamp which matches all Time Entries stopped after it. Eg. 2017-01-01T00:00:00.000.}
+\item{stoppedAfter}{Timestamp which matches all time entries stopped after it. Eg. 2017-01-01T00:00:00.000.}
 
-\item{startedBefore}{Timestamp which matches all Time Entries started before it. Eg. 2017-12-31T23:59:59.999.}
+\item{startedBefore}{Timestamp which matches all time entries started before it. Eg. 2017-12-31T23:59:59.999.}
 
 \item{token}{Token obtained with \code{\link{signIn}}}
 
-\item{as_df}{If TRUE a data frame is returned, if FALSE a list is returned.}
-
-\item{tz}{Desired timezone}
+\item{as_df}{If \code{TRUE} a data frame is returned, if \code{FALSE} a list is returned.}
 }
 \value{
-A data frame or list containing id, activity id, name, color, integration, started at, stopped at and a note.
+A data frame or list containing id (\code{id}), activity id (\code{activityId}),
+project name (\code{name}), color (\code{color}), integration (\code{integration}),
+started at (\code{startedAt}), stopped at (\code{stoppedAt}) and a note (\code{note}).
 }
 \description{
 Find Time Entries which have at least one millisecond in common with provided time range.
@@ -27,5 +27,5 @@ Find Time Entries which have at least one millisecond in common with provided ti
 stoppedAfter <- "2017-09-17T00:00:00.000"
 startedBefore <- "2017-09-19T00:00:00.000"
 token <- "123456789"
-timeEntries(stoppedAfter, startedBefore, token, as_df = TRUE, tz = "CET")
+timeEntries(stoppedAfter, startedBefore, token, as_df = TRUE)
 }
