@@ -25,9 +25,9 @@ posix_to_timeular <- function(posix = "2017-09-24 17:18:53 CEST") {
         ":",
         stringr::str_pad(lubridate::minute(posix), width = 2, side = "left", pad = 0),
         ":",
-        stringr::str_pad(round(lubridate::second(posix),0), width = 2, side = "left", pad = 0),
+        stringr::str_pad(floor(lubridate::second(posix)), width = 2, side = "left", pad = 0),
         ".",
-        stringr::str_pad(round((lubridate::second(posix) %% 1) * 1000,0), width = 2, side = "left", pad = 0)
+        stringr::str_pad(round((lubridate::second(posix) %% 1) * 1000,0), width = 3, side = "left", pad = 0)
     )
 
     return(timeular_time)
