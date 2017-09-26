@@ -40,6 +40,8 @@ timetrackDay <- function(day = as.POSIXct("2017-09-21", tz = "CET"), token, tz =
         decHour = round(timeDiff / 60, 2)
     )
 
+    result <- as.data.frame(result)
+
     # Remove time difference in minutes
     result$timeDiff <- NULL
 
