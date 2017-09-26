@@ -113,6 +113,53 @@ timeulaR::timeEntries(stoppedAfter, startedBefore, token, as_df = TRUE)
 #  438477      54647  xxx #4eae53         zei 2017-09-18T14:32:26.960 2017-09-18T15:28:00.451   NA
 ```
 
+Custom functions
+================
+
+### Get the aggregated timetrack on a specific day
+
+``` r
+token <- "123456789"
+day <- as.POSIXct("2017-09-21", tz = "CET")
+timeulaR::timetrackDay(day, token, tz = "CET")
+#  name    hm decHour
+#   xxx 01:10    1.17
+#   yyy 00:18    0.30
+#   zzz 05:22    5.36
+#   xyz 02:07    2.11
+#   zyx 00:15    0.24
+```
+
+### Get the aggregated timetrack in a specific week
+
+``` r
+token <- "123456789"
+timeulaR::timetrackWeek(weekNumber = 38, token, tz = "CET")
+#        date   weekDay name    hm decHour
+#  2017-09-18    Monday  xxx 06:39    6.64
+#  2017-09-18    Monday  yyy 00:28    0.47
+#  2017-09-18    Monday  zzz 01:12    1.20
+#  2017-09-18    Monday  xyz 00:17    0.27
+#  2017-09-19   Tuesday  xxx 06:50    6.82
+#  2017-09-19   Tuesday  yyy 01:56    1.93
+#  2017-09-19   Tuesday  zzz 00:42    0.69
+#  2017-09-19   Tuesday  xyz 01:11    1.18
+#  2017-09-20 Wednesday  xxx 00:27    0.45
+#  2017-09-20 Wednesday  zzz 07:12    7.19
+#  2017-09-20 Wednesday  xyz 00:58    0.97
+#  2017-09-21  Thursday  xxx 01:10    1.17
+#  2017-09-21  Thursday  yyy 00:18    0.30
+#  2017-09-21  Thursday  zzz 05:22    5.36
+#  2017-09-21  Thursday  xyz 02:07    2.11
+#  2017-09-21  Thursday  zyx 00:15    0.24
+#  2017-09-22    Friday  xxx 01:15    1.25
+#  2017-09-22    Friday  zyx 02:60    2.99
+#  2017-09-22    Friday  zzz 05:45    5.75
+#  2017-09-23  Saturday  zyx 01:34    1.56
+#  2017-09-23  Saturday  zzz 03:00    3.00
+#  2017-09-24    Sunday  xxx 03:31    3.52
+```
+
 Helper functions
 ================
 
