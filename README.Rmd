@@ -39,18 +39,6 @@ token <- timeulaR::signIn(apiKey, apiSecret)
 ```
 
 
-### Fetch user's profile
-
-With this function you can fetch your profile data.
-
-```{r example_userProfile, eval = FALSE}
-token <- "123456789"
-timeulaR::userProfile(token, as_df = TRUE)
-#  userId          email firstName  lastName
-#    7030 ses@damvad.com Sebastian Steenssøn
-```
-
-
 ### Fetch API key
 
 With this function you can fetch your API Key.
@@ -71,6 +59,29 @@ If you have lost your API Secret, you can generate a new pair of API Key & API S
 ```{r example_generateKeys, eval = FALSE}
 token <- "123456789"
 timeulaR::generateKeys(token)
+```
+
+
+### Fetch user's profile
+
+With this function you can fetch your profile data.
+
+```{r example_userProfile, eval = FALSE}
+token <- "123456789"
+timeulaR::userProfile(token, as_df = TRUE)
+#  userId          email firstName  lastName
+#    7030 ses@damvad.com Sebastian Steenssøn
+```
+
+
+### List enabled Integrations
+
+With this endpoint you can list names of all Integrations you have enabled on the profile website (https://profile.timeular.com/#/login).
+
+```{r example_integrations, eval = FALSE}
+token <- "123456789"
+timeulaR::integrations(token, as_df = TRUE)
+#  data frame with 0 columns and 0 rows
 ```
 
 

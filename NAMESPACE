@@ -3,6 +3,7 @@
 export(currentTracking)
 export(fetchKey)
 export(generateKeys)
+export(integrations)
 export(listActivities)
 export(listDevices)
 export(posix_to_timeular)
