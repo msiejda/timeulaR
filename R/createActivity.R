@@ -29,7 +29,7 @@ createActivity <- function(name = "being awesome", color = "#a1b2c3", integratio
         integration = integration
     )
 
-    # Retrieve information
+    # Request
     resp <- httr::POST(
         url = paste0(base_url, "activities"),
         body = query,
