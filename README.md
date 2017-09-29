@@ -92,6 +92,17 @@ timeulaR::createActivity(name = "being awesome", color = "#a1b2c3", integration 
 #  57842 being awesome #a1b2c3         zei         NA
 ```
 
+### Edit an Activity
+
+With this function you can edit the activity name or color.
+
+``` r
+token <- "123456789"
+timeulaR::editActivity(activityId = "57842", name = "being fucking awesome", color = "#000000", token, as_df = TRUE)
+#     id                  name   color integration deviceSide
+#  57842 being fucking awesome #000000         zei         NA
+```
+
 ### List all known devices
 
 ``` r

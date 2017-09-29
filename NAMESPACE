@@ -2,6 +2,7 @@
 
 export(createActivity)
 export(currentTracking)
+export(editActivity)
 export(fetchKey)
 export(generateKeys)
 export(integrations)
