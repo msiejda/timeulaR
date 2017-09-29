@@ -7,7 +7,7 @@
 #' @param token Token obtained with \code{\link{signIn}}.
 #' @param as_df If TRUE a data frame is returned, if FALSE a list is returned.
 #'
-#' @return A data frame or list with id, name, color, integration and deviceSide (\code{NULL}).
+#' @return A data frame or list with id, name, color, integration and deviceSide.
 #' @export
 #'
 #' @examples token <- "123456789"
