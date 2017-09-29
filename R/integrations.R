@@ -2,7 +2,7 @@
 #'
 #' With this endpoint you can list names of all Integrations you have enabled.
 #'
-#' @param token Token obtained with \code{\link{signIn}}
+#' @param token Token obtained with \code{\link{signIn}}.
 #' @param as_df If TRUE a data frame is returned, if FALSE a list is returned.
 #'
 #' @return A data frame or list with names of the integrations.
