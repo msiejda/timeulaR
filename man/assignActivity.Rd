@@ -16,12 +16,12 @@ assignActivity(activityId = NULL, deviceSide = NULL, token, as_df = TRUE)
 \item{as_df}{If TRUE a data frame is returned, if FALSE a list is returned.}
 }
 \value{
-A data frame or list with id, name, color, integration and deviceSide (\code{NULL}).
+A data frame or list with id, name, color, integration and deviceSide.
 }
 \description{
 With this endpoint you can assign an Activity to any Side of your active Device.
 }
 \examples{
 token <- "123456789"
-assignActivity(activityId = NULL, deviceSide = NULL, token, token, as_df = TRUE)
+assignActivity(activityId = "57302", deviceSide = 8, token, as_df = TRUE)
 }
