@@ -154,6 +154,19 @@ timeulaR::unassignActivity(activityId = "57302", deviceSide = 8, token, as_df = 
 ```
 
 
+### Fetch tags & mentions of given activity
+
+Tags and mentions are created with use of # and @ prefixes in notes of your time entries. Moreover if an activity is linked with integration, let’s say JIRA project, JIRA task IDs are visible as tags. With this endpoint you can fetch all tags and mentions valid in context of given activity. In this API version each tag / mention has ID only, while labels are NULL / NA.
+
+```{r example_tagsAndMentions, eval = FALSE}
+token <- "123456789"
+timeulaR::tagsAndMentions(activityId = "57302", token, as_df = TRUE)
+#      type          id label
+#      tags     tagTest    NA
+#  mentions mentionTest    NA
+```
+
+
 ### List all known devices
 
 ```{r example_listDevices, eval = FALSE}
