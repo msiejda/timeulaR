@@ -25,7 +25,7 @@ fetchKey <- function(token) {
     if ( httr::status_code(resp) == 200 ) {
 
         # Extract content from the post data
-        parsed <- httr::content(resp, type = "application/json")
+        result <- httr::content(resp, type = "application/json")
 
     } else {
 
@@ -33,5 +33,5 @@ fetchKey <- function(token) {
 
     }
 
-    return(parsed)
+    return(result)
 }

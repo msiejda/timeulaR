@@ -31,7 +31,7 @@ currentTracking <- function(token, as_df = TRUE, tz = "CET") {
 
     if ( as_df ) {
 
-        parsed <- data.frame(
+        result <- data.frame(
             id = ifelse(is.null(parsed$currentTracking$activity$id), NA, parsed$currentTracking$activity$id),
             name = ifelse(is.null(parsed$currentTracking$activity$name), NA, parsed$currentTracking$activity$name),
             color = ifelse(is.null(parsed$currentTracking$activity$color), NA, parsed$currentTracking$activity$color),
@@ -43,5 +43,5 @@ currentTracking <- function(token, as_df = TRUE, tz = "CET") {
 
     }
 
-    return(parsed)
+    return(result)
 }

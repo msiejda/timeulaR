@@ -38,7 +38,7 @@ timeEntries <- function(stoppedAfter, startedBefore, token, as_df = TRUE) {
 
     if ( as_df ) {
 
-        parsed <- lapply(parsed$timeEntries, function(entry) {
+        result <- lapply(parsed$timeEntries, function(entry) {
 
             data.frame(
                 id = ifelse(is.null(entry$id), NA, entry$id),
@@ -54,11 +54,11 @@ timeEntries <- function(stoppedAfter, startedBefore, token, as_df = TRUE) {
 
         })
 
-        parsed <- do.call(rbind, parsed)
-        parsed <- parsed[order(parsed$startedAt),]
-        rownames(parsed) <- 1:nrow(parsed)
+        result <- do.call(rbind, result)
+        result <- result[order(result$startedAt),]
+        rownames(result) <- 1:nrow(result)
 
     }
 
-    return(parsed)
+    return(result)
 }

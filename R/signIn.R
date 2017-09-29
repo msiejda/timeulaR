@@ -34,7 +34,7 @@ signIn <- function(apiKey, apiSecret) {
 
         # Extract content from the post data
         parsed <- httr::content(resp, type = "application/json")
-        token <- parsed$token
+        result <- parsed$token
 
     } else {
 
@@ -42,5 +42,5 @@ signIn <- function(apiKey, apiSecret) {
 
     }
 
-    return(token)
+    return(result)
 }

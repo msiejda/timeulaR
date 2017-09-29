@@ -30,21 +30,21 @@ listDevices <- function(token, as_df = TRUE) {
 
     if ( as_df ) {
 
-            parsed <- lapply(parsed$devices, function(entry) {
+        result <- lapply(parsed$devices, function(entry) {
 
-                data.frame(
-                    serial = ifelse(is.null(entry$serial), NA, entry$serial),
-                    name = ifelse(is.null(entry$name), NA, entry$name),
-                    active = ifelse(is.null(entry$active), NA, entry$active),
-                    disabled = ifelse(is.null(entry$disabled), NA, entry$disabled),
-                    stringsAsFactors = FALSE
-                )
+            data.frame(
+                serial = ifelse(is.null(entry$serial), NA, entry$serial),
+                name = ifelse(is.null(entry$name), NA, entry$name),
+                active = ifelse(is.null(entry$active), NA, entry$active),
+                disabled = ifelse(is.null(entry$disabled), NA, entry$disabled),
+                stringsAsFactors = FALSE
+            )
 
-            })
+        })
 
-            parsed <- do.call(rbind, parsed)
+        result <- do.call(rbind, result)
 
     }
 
-    return(parsed)
+    return(result)
 }

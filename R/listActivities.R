@@ -31,11 +31,11 @@ listActivities <- function(token, as_df = TRUE) {
 
     if ( as_df ) {
 
-        parsed <- lapply(parsed$activities, as.data.frame)
-        parsed <- do.call(rbind, parsed)
-        parsed <- parsed[order(parsed$deviceSide), ]
+        result <- lapply(parsed$activities, as.data.frame)
+        result <- do.call(rbind, result)
+        result <- result[order(result$deviceSide), ]
 
     }
 
-    return(parsed)
+    return(result)
 }
