@@ -111,15 +111,26 @@ timeulaR::archiveActivity(activityId = "57842" token)
 #  ActivityId 57842 has been archived.
 ```
 
-### Assign an activity to device Side
+### Assign an activity to device side
 
 With this endpoint you can assign an Activity to any Side of your active Device.
 
 ``` r
 token <- "123456789"
-timeulaR::assignActivity(activityId = "57302", deviceSide = 8, token, token, as_df = TRUE)
+timeulaR::assignActivity(activityId = "57302", deviceSide = 8, token, as_df = TRUE)
 #     id name   color integration deviceSide
 #  57302  xxx #617d8a         zei          8
+```
+
+### Unassign an activity from a device side
+
+With this endpoint you can unassign an Activity from Side of your active Device.
+
+``` r
+token <- "123456789"
+timeulaR::unassignActivity(activityId = "57302", deviceSide = 8, token, as_df = TRUE)
+#     id name   color integration deviceSide
+#  57302  xxx #617d8a         zei         NA
 ```
 
 ### List all known devices
