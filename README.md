@@ -16,7 +16,10 @@ devtools::install_github("Steensson/timeulaR")
 Timeular Public API functions
 =============================
 
-### Obtain access token
+Authentication
+--------------
+
+#### Obtain access token
 
 With this endpoint you can obtain Access Token required to access secured endpoints. To do so, you have to provide API Key & API Secret. They can be generated on the profile website (<https://profile.timeular.com/#/login>).
 
@@ -26,7 +29,7 @@ apiSecret <- "EFGHijkl5678="
 token <- timeulaR::signIn(apiKey, apiSecret)
 ```
 
-### Fetch API key
+#### Fetch API key
 
 With this function you can fetch your API Key.
 
@@ -35,7 +38,7 @@ token <- "123456789"
 timeulaR::fetchKey(token)
 ```
 
-### Generate new API Key & API Secret
+#### Generate new API Key & API Secret
 
 With this function you can generate new pair of API Key & API Secret. Every time you generate a new pair, an old one becomes invalid. Your API Secret won’t be accessible later, so please note it down in some secret place. If you have lost your API Secret, you can generate a new pair of API Key & API Secret here.
 
@@ -44,7 +47,10 @@ token <- "123456789"
 timeulaR::generateKeys(token)
 ```
 
-### Fetch user's profile
+Profile
+-------
+
+#### Fetch user's profile
 
 With this function you can fetch your profile data.
 
@@ -55,7 +61,12 @@ timeulaR::userProfile(token, as_df = TRUE)
 #    7030 ses@damvad.com Sebastian Steenssøn
 ```
 
-### List enabled integrations
+Integrations
+------------
+
+Your Timeular account can be connected with Integrations, eg. JIRA. Check them out on Profile website: <https://profile.timeular.com/#/app/integrations>.
+
+#### List enabled integrations
 
 With this endpoint you can list names of all Integrations you have enabled on the profile website (<https://profile.timeular.com/#/login>).
 
@@ -65,7 +76,12 @@ timeulaR::integrations(token, as_df = TRUE)
 #  data frame with 0 columns and 0 rows
 ```
 
-### List all activities
+Time Tracking / Activities
+--------------------------
+
+Activity is one of the main concepts in Timeular. You can track time on it and synchronize it with your JIRA, Toggl etc. When activity is no longer needed, you can archive it. Don't be afraid, time tracked on it won't be deleted.
+
+#### List all activities
 
 ``` r
 token <- "123456789"
@@ -81,7 +97,7 @@ timeulaR::listActivities(token)
 #  54654  xxx #374046         zei          8
 ```
 
-### Create an activity
+#### Create an activity
 
 With this endpoint you can create a new Activity. It should have name and color. Name doesn’t have to be unique. You can also provide Integration to which Activity will belong (zei by default, which means no special Integration). You can obtain list of enabled Integrations by using the function integrations.
 
@@ -92,7 +108,7 @@ timeulaR::createActivity(name = "being awesome", color = "#a1b2c3", integration 
 #  57842 being awesome #a1b2c3         zei         NA
 ```
 
-### Edit an activity
+#### Edit an activity
 
 With this function you can edit the activity name or color.
 
@@ -103,7 +119,7 @@ timeulaR::editActivity(activityId = "57842", name = "being fucking awesome", col
 #  57842 being fucking awesome #000000         zei         NA
 ```
 
-### Archive an activity
+#### Archive an activity
 
 ``` r
 token <- "123456789"
@@ -111,7 +127,7 @@ timeulaR::archiveActivity(activityId = "57842" token)
 #  ActivityId 57842 has been archived.
 ```
 
-### Assign an activity to device side
+#### Assign an activity to device side
 
 With this endpoint you can assign an Activity to any Side of your active Device.
 
@@ -122,7 +138,7 @@ timeulaR::assignActivity(activityId = "57302", deviceSide = 8, token, as_df = TR
 #  57302  xxx #617d8a         zei          8
 ```
 
-### Unassign an activity from a device side
+#### Unassign an activity from a device side
 
 With this endpoint you can unassign an Activity from Side of your active Device.
 
@@ -133,7 +149,7 @@ timeulaR::unassignActivity(activityId = "57302", deviceSide = 8, token, as_df = 
 #  57302  xxx #617d8a         zei         NA
 ```
 
-### Fetch tags & mentions of given activity
+#### Fetch tags & mentions of given activity
 
 Tags and mentions are created with use of \# and @ prefixes in notes of your time entries. Moreover if an activity is linked with integration, let’s say JIRA project, JIRA task IDs are visible as tags. With this endpoint you can fetch all tags and mentions valid in context of given activity. In this API version each tag / mention has ID only, while labels are NULL / NA.
 
@@ -145,7 +161,22 @@ timeulaR::tagsAndMentions(activityId = "57302", token, as_df = TRUE)
 #  mentions mentionTest    NA
 ```
 
-### List all known devices
+#### List all archived activities
+
+``` r
+token <- "123456789"
+timeulaR::listArchivedActivities(token, as_df = TRUE)
+#     id                  name   color integration deviceSide
+#  57842 being fucking awesome #000000         zei         NA
+#  54646    Exploring Timeular #2895f0         zei         NA
+```
+
+Time tracking / devices
+-----------------------
+
+Device represents your ZEI°. At the very beginning Timeular knows nothing about your devices, but you can activate any device by providing its serial. Only one device can be an active one at any given moment – thanks to it your client and desktop apps can perform actions in context of same paired ZEI°. Moreover you can name your devices to distinguish them easily. Device can be marked as disabled too, which has no effect on API logic, but can help you to know (between multiple clients) that given device should not handle side changes (until enabling again).
+
+#### List all known devices
 
 ``` r
 token <- "123456789"
@@ -154,7 +185,12 @@ timeulaR::listDevices(token)
 #  TZ008W0S   NA   TRUE    FALSE
 ```
 
-### Show current tracking
+Time tracking / Current tracking
+--------------------------------
+
+Tracking is the representation of what you are doing at any given moment. When finished, a new time entry is created based on tracked time. All timestamps are in format 'YYYY-MM-DDTHH:mm:ss.SSS' in UTC, eg. '2017-12-31T23:59:59.999'.
+
+#### Show current tracking
 
 ``` r
 token <- "123456789"
@@ -163,7 +199,12 @@ timeulaR::currentTracking(token, as_df = TRUE)
 #  54647 Acquisition and Public Tender #4eae53         zei 2017-09-18T16:32:26.437   NA
 ```
 
-### Find time entries in given range
+Time tracking / time entries
+----------------------------
+
+Time Entry is one of the main concepts in Timeular. It represents time spent on some activity. It can contain a textual note, which allows you to put some useful info, eg. what exactly were you working on. There can be only one time entry at any given time, even if they belong to different activities. All timestamps are in format 'YYYY-MM-DDTHH:mm:ss.SSS' in UTC, eg. '2017-12-31T23:59:59.999'.
+
+#### Find time entries in given range
 
 Find Time Entries which have at least one millisecond in common with provided time range.
 
@@ -188,9 +229,9 @@ timeulaR::timeEntries(stoppedAfter, startedBefore, token, as_df = TRUE)
 ```
 
 Custom functions
-================
+----------------
 
-### Get the aggregated timetrack on a specific day
+#### Get the aggregated timetrack on a specific day
 
 ``` r
 token <- "123456789"
@@ -204,7 +245,7 @@ timeulaR::timetrackDay(day, token, tz = "CET")
 #   zyx 00:15    0.24
 ```
 
-### Get the aggregated timetrack in a specific week
+#### Get the aggregated timetrack in a specific week
 
 ``` r
 token <- "123456789"
@@ -235,9 +276,9 @@ timeulaR::timetrackWeek(weekNumber = 38, token, tz = "CET")
 ```
 
 Helper functions
-================
+----------------
 
-### Convert Timeular timestamp to POSIX object
+#### Convert Timeular timestamp to POSIX object
 
 ``` r
 timeular_time <- "2017-09-18T12:19:20.356"
@@ -245,7 +286,7 @@ timeulaR::timeular_to_posix(timeular_time, tz = "CET")
 # "2017-09-18 14:19:20 CEST"
 ```
 
-### Convert POSIX object to Timeular timestamp
+#### Convert POSIX object to Timeular timestamp
 
 ``` r
 posix <- as.POSIXct("2017-09-18 14:19:20", tz = "CET")
