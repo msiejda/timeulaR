@@ -7,7 +7,7 @@
 integrations(token, as_df = TRUE)
 }
 \arguments{
-\item{token}{Token obtained with \code{\link{signIn}}}
+\item{token}{Token obtained with \code{\link{signIn}}.}
 
 \item{as_df}{If TRUE a data frame is returned, if FALSE a list is returned.}
 }
