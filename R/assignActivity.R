@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @examples token <- "123456789"
-#' assignActivity(activityId = NULL, deviceSide = NULL, token, token, as_df = TRUE)
+#' assignActivity(activityId = "57302", deviceSide = 8, token, as_df = TRUE)
 assignActivity <- function(activityId = NULL, deviceSide = NULL, token, as_df = TRUE) {
 
     if (is.null(activityId)) stop("You haven't provided an activityId")
