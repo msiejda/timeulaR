@@ -55,7 +55,7 @@ timeulaR::userProfile(token, as_df = TRUE)
 #    7030 ses@damvad.com Sebastian Steenssøn
 ```
 
-### List enabled Integrations
+### List enabled integrations
 
 With this endpoint you can list names of all Integrations you have enabled on the profile website (<https://profile.timeular.com/#/login>).
 
@@ -81,7 +81,7 @@ timeulaR::listActivities(token)
 #  54654  xxx #374046         zei          8
 ```
 
-### Create an Activity
+### Create an activity
 
 With this endpoint you can create a new Activity. It should have name and color. Name doesn’t have to be unique. You can also provide Integration to which Activity will belong (zei by default, which means no special Integration). You can obtain list of enabled Integrations by using the function integrations.
 
@@ -92,7 +92,7 @@ timeulaR::createActivity(name = "being awesome", color = "#a1b2c3", integration 
 #  57842 being awesome #a1b2c3         zei         NA
 ```
 
-### Edit an Activity
+### Edit an activity
 
 With this function you can edit the activity name or color.
 
@@ -103,12 +103,23 @@ timeulaR::editActivity(activityId = "57842", name = "being fucking awesome", col
 #  57842 being fucking awesome #000000         zei         NA
 ```
 
-### Archive an Activity
+### Archive an activity
 
 ``` r
 token <- "123456789"
 timeulaR::archiveActivity(activityId = "57842" token)
 #  ActivityId 57842 has been archived.
+```
+
+### Assign an activity to device Side
+
+With this endpoint you can assign an Activity to any Side of your active Device.
+
+``` r
+token <- "123456789"
+timeulaR::assignActivity(activityId = "57302", deviceSide = 8, token, token, as_df = TRUE)
+#     id name   color integration deviceSide
+#  57302  xxx #617d8a         zei          8
 ```
 
 ### List all known devices
@@ -129,7 +140,7 @@ timeulaR::currentTracking(token, as_df = TRUE)
 #  54647 Acquisition and Public Tender #4eae53         zei 2017-09-18T16:32:26.437   NA
 ```
 
-### Find Time Entries in given range
+### Find time entries in given range
 
 Find Time Entries which have at least one millisecond in common with provided time range.
 
