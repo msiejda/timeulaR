@@ -30,17 +30,13 @@ signIn <- function(apiKey, apiSecret) {
         encode = "json"
     )
 
-    if ( httr::status_code(resp) == 200 ) {
+    # Status and stop execution if status different from 200
+    status <- httr::status_code(resp)
+    if (status != 200) stop("Something went wrong! Error code ", status)
 
-        # Extract content from the post data
-        parsed <- httr::content(resp, type = "application/json")
-        result <- parsed$token
-
-    } else {
-
-        stop("Something went wrong!")
-
-    }
+    # Parse response
+    parsed <- httr::content(resp, type = "application/json")
+    result <- parsed$token
 
     return(result)
 }

@@ -19,16 +19,14 @@ currentTracking <- function(token, as_df = TRUE, tz = "CET") {
         httr::add_headers(Authorization = bearer_token)
     )
 
-    if ( httr::status_code(resp) == 200 ) {
+    # Status and stop execution if status different from 200
+    status <- httr::status_code(resp)
+    if (status != 200) stop("Something went wrong! Error code ", status)
 
-        parsed <- httr::content(resp, type = "application/json")
+    # Parse response
+    parsed <- httr::content(resp, type = "application/json")
 
-    } else {
-
-        stop("Something went wrong!")
-
-    }
-
+    # If as_df is TRUE
     if ( as_df ) {
 
         result <- data.frame(

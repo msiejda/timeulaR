@@ -22,16 +22,12 @@ fetchKey <- function(token) {
         httr::add_headers(Authorization = bearer_token)
     )
 
-    if ( httr::status_code(resp) == 200 ) {
+    # Status and stop execution if status different from 200
+    status <- httr::status_code(resp)
+    if (status != 200) stop("Something went wrong! Error code ", status)
 
-        # Extract content from the post data
-        result <- httr::content(resp, type = "application/json")
-
-    } else {
-
-        stop("Something went wrong!")
-
-    }
+    # Parse response
+    parsed <- httr::content(resp, type = "application/json")
 
     return(result)
 }
