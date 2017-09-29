@@ -31,7 +31,19 @@ listActivities <- function(token, as_df = TRUE) {
 
     if ( as_df ) {
 
-        result <- lapply(parsed$activities, as.data.frame)
+        result <- lapply(parsed$activities, function(entry) {
+
+            data.frame(
+                id = ifelse(is.null(entry$id), NA, entry$id),
+                name = ifelse(is.null(entry$name), NA, entry$name),
+                color = ifelse(is.null(entry$color), NA, entry$color),
+                integration = ifelse(is.null(entry$integration), NA, entry$integration),
+                deviceSide = ifelse(is.null(entry$deviceSide), NA, entry$deviceSide),
+                stringsAsFactors = FALSE
+            )
+
+        })
+
         result <- do.call(rbind, result)
         result <- result[order(result$deviceSide), ]
 
