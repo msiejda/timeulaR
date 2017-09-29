@@ -81,6 +81,17 @@ timeulaR::listActivities(token)
 #  54654  xxx #374046         zei          8
 ```
 
+### Create an Activity
+
+With this endpoint you can create a new Activity. It should have name and color. Name doesn’t have to be unique. You can also provide Integration to which Activity will belong (zei by default, which means no special Integration). You can obtain list of enabled Integrations by using the function integrations.
+
+``` r
+token <- "123456789"
+timeulaR::createActivity(name = "being awesome", color = "#a1b2c3", integration = "zei", token, as_df = TRUE)
+#     id          name   color integration deviceSide
+#  57842 being awesome #a1b2c3         zei         NA
+```
+
 ### List all known devices
 
 ``` r
