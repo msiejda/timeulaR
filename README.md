@@ -103,6 +103,14 @@ timeulaR::editActivity(activityId = "57842", name = "being fucking awesome", col
 #  57842 being fucking awesome #000000         zei         NA
 ```
 
+### Archive an Activity
+
+``` r
+token <- "123456789"
+timeulaR::archiveActivity(activityId = "57842" token)
+#  ActivityId 57842 has been archived.
+```
+
 ### List all known devices
 
 ``` r
