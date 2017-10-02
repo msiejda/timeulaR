@@ -26,12 +26,22 @@ timetrackWeek <- function(weekNumber = 38, token, year = NULL, tz = "CET") {
     # Loop over every date in dates
     result <- pbapply::pblapply(dates, function(day) {
 
-        data.frame(
-            date = day,
-            weekDay = lubridate::wday(day, label = TRUE, abb = FALSE),
-            timeulaR::timetrackDay(day, token, tz = tz),
-            stringsAsFactors = FALSE
-        )
+        result_day <- timeulaR::timetrackDay(day, token, tz = tz)
+
+        if (!is.null(df_day)) {
+
+            data.frame(
+                date = day,
+                weekDay = lubridate::wday(day, label = TRUE, abb = FALSE),
+                result_day,
+                stringsAsFactors = FALSE
+            )
+
+        } else {
+
+            result_day
+
+        }
 
     })
 
