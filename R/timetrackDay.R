@@ -20,30 +20,34 @@ timetrackDay <- function(day = as.POSIXct("2017-09-21", tz = "CET"), token, tz =
     # Get time entries between stoppedAfter and startedBefore
     result <- timeEntries(stoppedAfter, startedBefore, token, as_df = TRUE)
 
-    # Converting Timeular timestamps to POSIX objects and calculating time
-    # difference in minutes
-    result <- dplyr::mutate(
-        result,
-        startedAt = timeular_to_posix(startedAt, tz = tz),
-        stoppedAt = timeular_to_posix(stoppedAt, tz = tz),
-        timeDiff = as.numeric(difftime(stoppedAt, startedAt, units = "mins"))
-    )
+    if (!is.null(result)) {
 
-    # Grouping on activity name summarise time difference
-    result <- dplyr::group_by(result, name)
-    result <- dplyr::summarise(result, timeDiff = sum(timeDiff))
+        # Converting Timeular timestamps to POSIX objects and calculating time
+        # difference in minutes
+        result <- dplyr::mutate(
+            result,
+            startedAt = timeular_to_posix(startedAt, tz = tz),
+            stoppedAt = timeular_to_posix(stoppedAt, tz = tz),
+            timeDiff = as.numeric(difftime(stoppedAt, startedAt, units = "mins"))
+        )
 
-    # Convert time difference into H:M and decimal hours
-    result <- dplyr::mutate(
-        result,
-        hm = convert_mins_to_hm(timeDiff),
-        decHour = round(timeDiff / 60, 2)
-    )
+        # Grouping on activity name summarise time difference
+        result <- dplyr::group_by(result, name)
+        result <- dplyr::summarise(result, timeDiff = sum(timeDiff))
 
-    result <- as.data.frame(result)
+        # Convert time difference into H:M and decimal hours
+        result <- dplyr::mutate(
+            result,
+            hm = convert_mins_to_hm(timeDiff),
+            decHour = round(timeDiff / 60, 2)
+        )
 
-    # Remove time difference in minutes
-    result$timeDiff <- NULL
+        result <- as.data.frame(result)
+
+        # Remove time difference in minutes
+        result$timeDiff <- NULL
+
+    }
 
     return(result)
 }

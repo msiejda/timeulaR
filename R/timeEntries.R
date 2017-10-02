@@ -33,28 +33,36 @@ timeEntries <- function(stoppedAfter, startedBefore, token, as_df = TRUE) {
     # Parse response
     parsed <- httr::content(resp, type = "application/json")
 
-    # If as_df is TRUE
-    if ( as_df ) {
+    if (length(parsed$timeEntries) != 0) {
 
-        result <- lapply(parsed$timeEntries, function(entry) {
+        # If as_df is TRUE
+        if ( as_df ) {
 
-            data.frame(
-                id = ifelse(is.null(entry$id), NA, entry$id),
-                activityId = ifelse(is.null(entry$activity$id), NA, entry$activity$id),
-                name = ifelse(is.null(entry$activity$name), NA, entry$activity$name),
-                color = ifelse(is.null(entry$activity$color), NA, entry$activity$color),
-                integration = ifelse(is.null(entry$activity$integration), NA, entry$activity$integration),
-                startedAt = ifelse(is.null(entry$duration$startedAt), NA, entry$duration$startedAt),
-                stoppedAt = ifelse(is.null(entry$duration$stoppedAt), NA, entry$duration$stoppedAt),
-                note = ifelse(is.null(entry$note), NA, entry$note),
-                stringsAsFactors = FALSE
-            )
+            result <- lapply(parsed$timeEntries, function(entry) {
 
-        })
+                data.frame(
+                    id = ifelse(is.null(entry$id), NA, entry$id),
+                    activityId = ifelse(is.null(entry$activity$id), NA, entry$activity$id),
+                    name = ifelse(is.null(entry$activity$name), NA, entry$activity$name),
+                    color = ifelse(is.null(entry$activity$color), NA, entry$activity$color),
+                    integration = ifelse(is.null(entry$activity$integration), NA, entry$activity$integration),
+                    startedAt = ifelse(is.null(entry$duration$startedAt), NA, entry$duration$startedAt),
+                    stoppedAt = ifelse(is.null(entry$duration$stoppedAt), NA, entry$duration$stoppedAt),
+                    note = ifelse(is.null(entry$note), NA, entry$note),
+                    stringsAsFactors = FALSE
+                )
 
-        result <- do.call(rbind, result)
-        result <- result[order(result$startedAt),]
-        rownames(result) <- 1:nrow(result)
+            })
+
+            result <- do.call(rbind, result)
+            result <- result[order(result$startedAt),]
+            rownames(result) <- 1:nrow(result)
+
+        }
+
+    } else {
+
+        result <- NULL
 
     }
 
