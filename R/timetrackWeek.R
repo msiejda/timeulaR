@@ -28,7 +28,7 @@ timetrackWeek <- function(weekNumber = 38, token, year = NULL, tz = "CET") {
 
         result_day <- timeulaR::timetrackDay(day, token, tz = tz)
 
-        if (!is.null(df_day)) {
+        if (!is.null(result_day)) {
 
             data.frame(
                 date = day,
