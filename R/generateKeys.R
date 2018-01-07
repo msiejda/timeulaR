@@ -15,7 +15,7 @@
 #' generateKeys(token, as_df = TRUE)
 generateKeys <- function(token, as_df = TRUE) {
 
-    base_url <- "api.timeular.com/api/v1/"
+    base_url <- "https://api.timeular.com/api/v1/"
 
     # Building the query string
     bearer_token <- paste("Bearer", token)

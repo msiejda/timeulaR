@@ -19,7 +19,7 @@ tagsAndMentions <- function(activityId = NULL, token, as_df = TRUE) {
 
     if (is.null(activityId)) stop("You haven't provided an activityId")
 
-    base_url <- "api.timeular.com/api/v1/"
+    base_url <- "https://api.timeular.com/api/v1/"
     bearer_token <- paste("Bearer", token)
 
     resp <- httr::GET(

@@ -11,7 +11,7 @@
 #' currentTracking(token, as_df = TRUE, tz = "CET")
 currentTracking <- function(token, as_df = TRUE, tz = "CET") {
 
-    base_url <- "api.timeular.com/api/v1/"
+    base_url <- "https://api.timeular.com/api/v1/"
     bearer_token <- paste("Bearer", token)
 
     resp <- httr::GET(

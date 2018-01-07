@@ -15,7 +15,7 @@
 #' signIn(apiKey, apiSecret)
 signIn <- function(apiKey, apiSecret) {
 
-    base_url <- "api.timeular.com/api/v1/"
+    base_url <- "https://api.timeular.com/api/v1/"
 
     # Building the query string
     queryString <- list(

@@ -18,7 +18,7 @@ assignActivity <- function(activityId = NULL, deviceSide = NULL, token, as_df = 
     if (is.null(deviceSide)) stop("You haven't provided a deviceSide")
 
     # Base url and bearer token
-    base_url <- "api.timeular.com/api/v1/"
+    base_url <- "https://api.timeular.com/api/v1/"
     bearer_token <- paste("Bearer", token)
 
     # Request
