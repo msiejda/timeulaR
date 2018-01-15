@@ -21,7 +21,7 @@ timetrackWeek <- function(weekNumber = 38, token, year = NULL, tz = "CET") {
     origin <- as.POSIXct(paste0(year, "-01-01"), tz = tz)
 
     # Dates within weekNumber
-    dates <- origin + lubridate::weeks(weekNumber - 1) + lubridate::days(1:7)
+    dates <- origin + lubridate::weeks(weekNumber - 1) + lubridate::days(0:6)
 
     # Loop over every date in dates
     result <- pbapply::pblapply(dates, function(day) {
